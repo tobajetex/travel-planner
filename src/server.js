@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import { driver, closeDriver } from "./config/db.js";
 import dotenv from "dotenv";
+import flightRoutes from "./routes/flightRoutes.js";
 dotenv.config();
 
 const app = express();
@@ -11,6 +12,9 @@ const PORT = process.env.PORT || 3000;
 app.use(cors()); // Allows frontend to talk to backend
 app.use(express.json()); // Parses JSON request bodies
 app.use(express.static("src/public")); // Serves our HTML/CSS/JS files
+// --- API ROUTES ---
+// Mount all flight-related endpoints under /api
+app.use("/api", flightRoutes);
 
 // --- HEALTH CHECK ENDPOINT ---
 // This endpoint tests if CognoDB is reachable when the browser visits /api/health
@@ -25,6 +29,11 @@ app.get("/api/health", async (req, res) => {
   } finally {
     await session.close();
   }
+});
+
+// --- ROOT REDIRECT (optional, sends users to the frontend) ---
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/public/index.html");
 });
 
 // --- START THE SERVER ---
