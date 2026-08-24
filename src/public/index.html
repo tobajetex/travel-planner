@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>✈️ Flight Planner – GraphDB</title>
+    <!-- Google Font for a polished look -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Link to our CSS -->
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="app-container">
+      <!-- HEADER -->
+      <header class="app-header">
+        <div class="logo">
+          <span class="logo-icon">✈️</span>
+          <span class="logo-text">GraphPlanner</span>
+        </div>
+        <div class="badge">Powered by CognoDB</div>
+      </header>
+
+      <!-- MAIN SEARCH CARD -->
+      <main class="search-card">
+        <h1>Find the Cheapest Route</h1>
+        <p class="subtitle">
+          Search across our global network of direct and connecting flights.
+        </p>
+
+        <div class="search-form">
+          <div class="input-group">
+            <label for="from-select">From</label>
+            <select id="from-select" aria-label="Departure airport">
+              <option value="">Loading airports...</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="to-select">To</label>
+            <select id="to-select" aria-label="Arrival airport">
+              <option value="">Loading airports...</option>
+            </select>
+          </div>
+
+          <button id="search-btn" class="btn-primary" disabled>
+            <span class="btn-text">Find Flights</span>
+            <span class="btn-spinner hidden">⏳</span>
+          </button>
+        </div>
+
+        <!-- ERROR / MESSAGE DISPLAY -->
+        <div id="message-box" class="message-box hidden"></div>
+      </main>
+
+      <!-- RESULTS SECTION -->
+      <section id="results-section" class="results-section hidden">
+        <div class="results-header">
+          <h2>✈️ Your Itinerary</h2>
+          <div id="total-price" class="total-price">$0</div>
+        </div>
+
+        <!-- The itinerary timeline will be rendered here -->
+        <div id="timeline" class="timeline"></div>
+      </section>
+
+      <!-- EMPTY STATE (shown when no routes found) -->
+      <section id="empty-state" class="empty-state hidden">
+        <div class="empty-icon">🗺️</div>
+        <h3>No Routes Found</h3>
+        <p>
+          We couldn't find a path between these airports. Try adjusting your
+          search.
+        </p>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="app-footer">
+        <p>Built with Neo4j & CognoDB · Graph Database Take-Home Assignment</p>
+      </footer>
+    </div>
+
+    <!-- Link to our JavaScript -->
+    <script src="/script.js"></script>
+  </body>
+</html>
