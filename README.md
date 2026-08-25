@@ -41,11 +41,13 @@ WHERE f1.origin = 'LAX' AND f3.destination = 'SIN';
 
 ## 🗺️ Data Model
 
+```mermaid
 graph LR
-A[Airport] -->|HAS_FLIGHT| B[Airport]
+    A[Airport] -->|HAS_FLIGHT| B[Airport]
 
     style A fill:#0a192f,color:#fff,stroke:#333,stroke-width:2px
     style B fill:#0a192f,color:#fff,stroke:#333,stroke-width:2px
+```
 
 ### Nodes: `Airport`
 
